@@ -1,6 +1,7 @@
 const cacheName = 'v1';
 const cacheAssetts = [
     'index.html',
+    'restaurant.html',
     'css/styles.css',
     'js/dbhelper.js',
     'js/main.js',
