@@ -175,13 +175,13 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   li.append(address);
 
-  const more = document.createElement('button');
+  
+  const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  more.tabIndex = '3';
   li.append(more);
 
-  return li
+  return li;
 }
 
 /**
