@@ -15,12 +15,24 @@ self.addEventListener('install', e => {
         .then(cache => {
             console.log('Service worker caching files');
             cache.addAll(cacheAssetts);
-        }  
-        )
+        })
         .then(() => self.skipWaiting())
     )
 });
 
 self.addEventListener('activate', e => {
     console.log('service worker activated');
+
+    e.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames.map(cache => {
+                    if(cache !== cacheName){
+                        console.log('Service worker: clearing old cache');
+                        return caches.delete(cache);
+                    }
+                })
+            )
+        })
+    )
 });
